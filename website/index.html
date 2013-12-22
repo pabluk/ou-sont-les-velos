@@ -6,62 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/leaflet.css" rel="stylesheet"/>
-    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <style>
-    body {
-        padding: 0;
-        margin: 0;
-        background-color: black;
-    }
-    html, body, #map {
-        height: 100%;
-    }
+    <link href="css/style.css" rel="stylesheet"/>
 
-    #description {
-        padding: 20px;
-        border-radius: 10px;
-        color: #e8e8e8;
-        background-color: rgba(0, 0, 0, 0.6);
-        font-size: 20px;
-        font-family: 'Roboto', sans-serif;
-        text-align: right;
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        z-index: 100;
-        width: 420px;
-    }
-
-    #description h1 {
-        font-size: 54px;
-        font-weight: bold;
-        margin: 0px;
-    }
-
-    #description p {
-        padding: 0px;
-    }
-
-    #description a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    #total-bikes, #total-stations {
-        font-size: 26px;
-    }
-
-    #about {
-        font-size: 18px;
-    }
-    </style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/leaflet.js"></script>
@@ -72,16 +25,19 @@
 </head>
 <body>
     <div id="map"></div>
-    <div id="description">
-        <h1>Où sont les vélos ?</h1> 
-        <p>Un outil qui permet d'analyser et monitorer en temps réel la distribution des vélos en libre-service de la <b>ville de Nantes</b>.</p>
-        <p><b id="total-bikes">...</b> vélos disponibles<br/><b id="total-stations">...</b> stations ouvertes</p>
-        <p><img src="img/chart-01.png"/></p>
-        <p id="about"><b>À propos</b><br/>
-        Cet application web a été créé en utilisant 2 jeux de données Open data, <a href="http://data.paysdelaloire.fr/donnees/detail/photographies-aeriennes-de-la-loire-atlantique/" target="_blank">les photographies aériennes de la Loire-Atlantique</a> et l'<a href="https://developer.jcdecaux.com/" target="_blank">API Bicloo</a>.
-        <br/> 
-        </p>
-        <p><small>Développé par <a href="http://seminar.io/about/" target="_blank">Pablo Seminario</a>.</small></p>
+    <div id="bar-right" class="row">
+        <div class="col-xs-10 col-md-3 col-xs-offset-1 col-md-offset-9">
+            <div id="description">
+                <h1>Où sont les vélos ?</h1> 
+                <p>Un outil qui permet d'analyser et monitorer en temps réel la distribution des vélos en libre-service de la ville de Nantes.</p>
+                <p class="hidden-xs"><b id="total-bikes">...</b> vélos disponibles<br/><b id="total-stations">...</b> stations ouvertes</p>
+                <p id="about" class="hidden-xs"><b>À propos</b><br/>
+                Cet application web a été créé en utilisant 2 jeux de données Open data, <a href="http://data.paysdelaloire.fr/donnees/detail/photographies-aeriennes-de-la-loire-atlantique/" target="_blank">les photographies aériennes de la Loire-Atlantique</a> et l'<a href="https://developer.jcdecaux.com/" target="_blank">API Bicloo</a>.
+                <br/> 
+                </p>
+                <p><small>Développé par <a href="http://seminar.io/about/" target="_blank">Pablo Seminario</a>.</small></p>
+            </div>
+        </div>
     </div>
     <script>
     var data = [];
