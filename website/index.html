@@ -67,11 +67,6 @@
         heatmapLayer.setData(stations);
     }, "json");
 
-
-    var  southWest = L.latLng(47.185, -1.59),
-         northEast = L.latLng(47.250, -1.51),
-         bounds = L.latLngBounds(southWest, northEast);
-
     var map = L.map('map', {
         center: new L.LatLng(47.215, -1.5515),
         zoom: 15,
@@ -83,6 +78,10 @@
         boxZoom: false,
         scrollWheelZoom: false,
     });
+
+    var  southWest = L.latLng(47.162, -1.705),
+         northEast = L.latLng(47.274, -1.395),
+         bounds = L.latLngBounds(southWest, northEast);
     map.setMaxBounds(bounds);
     </script>
 </body>
