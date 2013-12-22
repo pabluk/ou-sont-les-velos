@@ -21,7 +21,6 @@
     <script src="js/heatmap.js"></script>
     <script src="js/heatmap-leaflet.js"></script>
     <script src="js/QuadTree.js"></script>
-    <script src="js/stations.js"></script>
 </head>
 <body>
     <div id="map"></div>
@@ -40,16 +39,6 @@
         </div>
     </div>
     <script>
-    var data = [];
-    var totalAvailableBikes = 0;
-    stations.forEach(function(station) {
-        point = {lat:station.position.lat, lon:station.position.lng, value:station.available_bikes}
-        data.push(point);
-        totalAvailableBikes += station.available_bikes;
-    });
-    $('#total-bikes').text(totalAvailableBikes);
-    $('#total-stations').text(stations.length);
-
     var osmUrl='http://tiles.seminar.io/nantes/{z}/{x}/{y}.jpeg';
     var osm = new L.TileLayer(osmUrl, {tms:true, minZoom: 14, maxZoom: 15});       
 
@@ -64,7 +53,20 @@
             1.0: "rgb(255,0,0)"
         }
     });
-    heatmapLayer.setData(data);
+
+    var stations = [];
+    var totalAvailableBikes = 0;
+    $.get("js/stations.js", function(data) {
+        data.forEach(function(station) {
+            point = {lat:station.position.lat, lon:station.position.lng, value:station.available_bikes}
+            stations.push(point);
+            totalAvailableBikes += station.available_bikes;
+        });
+        $('#total-bikes').text(totalAvailableBikes);
+        $('#total-stations').text(stations.length);
+        heatmapLayer.setData(stations);
+    }, "json");
+
 
     var  southWest = L.latLng(47.185, -1.59),
          northEast = L.latLng(47.250, -1.51),
@@ -81,7 +83,7 @@
         boxZoom: false,
         scrollWheelZoom: false,
     });
-    map.setMaxBounds(bound);
+    map.setMaxBounds(bounds);
     </script>
 </body>
 </html>
