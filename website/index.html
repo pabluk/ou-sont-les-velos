@@ -1,0 +1,122 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Où sont les vélos ?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <style>
+    body {
+        padding: 0;
+        margin: 0;
+        background-color: black;
+    }
+    html, body, #map {
+        height: 100%;
+    }
+
+    #description {
+        padding: 20px;
+        border-radius: 10px;
+        color: #e8e8e8;
+        background-color: rgba(0, 0, 0, 0.6);
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+        text-align: right;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        z-index: 100;
+        width: 420px;
+    }
+
+    #description h1 {
+        font-size: 54px;
+        font-weight: bold;
+        margin: 0px;
+    }
+
+    #description p {
+        padding: 0px;
+    }
+
+    #description a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    #total-bikes, #total-stations {
+        font-size: 26px;
+    }
+
+    #about {
+        font-size: 18px;
+    }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+    <script src="js/heatmap.js"></script>
+    <script src="js/heatmap-leaflet.js"></script>
+    <script src="js/QuadTree.js"></script>
+    <script src="js/stations.js"></script>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="description">
+        <h1>Où sont les vélos ?</h1> 
+        <p>Un outil qui permet d'analyser et monitorer en temps réel la distribution des vélos en libre-service de la <b>ville de Nantes</b>.</p>
+        <p><b id="total-bikes">...</b> vélos disponibles<br/><b id="total-stations">...</b> stations ouvertes</p>
+        <p><img src="img/chart-01.png"/></p>
+        <p id="about"><b>À propos</b><br/>
+        Cet application web a été créé en utilisant 2 jeux de données Open data, <a href="http://data.paysdelaloire.fr/donnees/detail/photographies-aeriennes-de-la-loire-atlantique/" target="_blank">les photographies aériennes de la Loire-Atlantique</a> et l'<a href="https://developer.jcdecaux.com/" target="_blank">API Bicloo</a>.
+        <br/> 
+        </p>
+        <p><small>Développé par <a href="http://seminar.io/about/" target="_blank">Pablo Seminario</a>.</small></p>
+    </div>
+    <script>
+    var data = [];
+    var totalAvailableBikes = 0;
+    stations.forEach(function(station) {
+        point = {lat:station.position.lat, lon:station.position.lng, value:station.available_bikes}
+        data.push(point);
+        totalAvailableBikes += station.available_bikes;
+    });
+    $('#total-bikes').text(totalAvailableBikes);
+    $('#total-stations').text(stations.length);
+
+    var osmUrl='http://tiles.seminar.io/nantes/{z}/{x}/{y}.jpeg';
+    var osm = new L.TileLayer(osmUrl, {tms:true, minZoom: 14, maxZoom: 15});       
+
+    var heatmapLayer = L.TileLayer.heatMap({
+        radius: { value: 180, absolute: true },
+        opacity: 0.75,
+        gradient: {
+            0.25: "rgb(0,0,255)",
+            0.45: "rgb(0,255,255)",
+            0.65: "rgb(0,255,0)",
+            0.95: "yellow",
+            1.0: "rgb(255,0,0)"
+        }
+    });
+    heatmapLayer.setData(data);
+
+    var  southWest = L.latLng(47.185, -1.59),
+         northEast = L.latLng(47.250, -1.51),
+         bounds = L.latLngBounds(southWest, northEast);
+
+    var map = L.map('map', {
+        center: new L.LatLng(47.215, -1.5515),
+        zoom: 15,
+        layers: [osm, heatmapLayer],
+        attributionControl: false,
+        zoomControl: false,
+        touchZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        scrollWheelZoom: false,
+    });
+    map.setMaxBounds(bound);
+    </script>
+</body>
+</html>
