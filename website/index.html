@@ -24,19 +24,14 @@
 </head>
 <body>
     <div id="map"></div>
-    <div id="bar-right" class="row">
-        <div class="col-xs-10 col-md-3 col-xs-offset-1 col-md-offset-9">
-            <div id="description">
-                <h1>Où sont les vélos ?</h1> 
-                <p>Un outil qui permet d'analyser et suivre en temps réel la distribution des vélos en libre-service de la ville de Nantes.</p>
-                <p class="hidden-xs"><b id="total-bikes">...</b> vélos disponibles<br/><b id="total-stations">...</b> stations ouvertes</p>
-                <p id="about" class="hidden-xs"><b>À propos</b><br/>
-                Cette application web a été créée en utilisant 2 jeux de données Open data, <a href="http://data.paysdelaloire.fr/donnees/detail/photographies-aeriennes-de-la-loire-atlantique/" target="_blank">les photographies aériennes de la Loire-Atlantique</a> et l'<a href="https://developer.jcdecaux.com/" target="_blank">API Bicloo</a>.
-                <br/> 
-                </p>
-                <p><small>Développé par <a href="http://seminar.io/about/" target="_blank">Pablo Seminario</a>.</small></p>
-            </div>
-        </div>
+    <div id="description">
+        <h1>Où sont les vélos ?</h1>
+        <p>Un outil qui permet d'analyser et suivre en temps réel la distribution des vélos en libre-service de la ville de Nantes.</p>
+        <p class="hidden-xs hidden-sm"><b id="total-bikes">...</b> vélos disponibles<br/><b id="total-stations">...</b> stations ouvertes</p>
+        <p id="about" class="hidden-xs"><b>À propos</b><br/>
+            Cette application web a été créée en utilisant 2 jeux de données Open data, <a href="http://data.paysdelaloire.fr/donnees/detail/photographies-aeriennes-de-la-loire-atlantique/" target="_blank">les photographies aériennes de la Loire-Atlantique</a> et l'<a href="https://developer.jcdecaux.com/" target="_blank">API Bicloo</a>.
+        </p>
+        <p><small>Développé par <a href="http://seminar.io/about/" target="_blank">Pablo Seminario</a>.</small></p>
     </div>
     <script>
     var osmUrl='http://tiles.seminar.io/nantes/{z}/{x}/{y}.jpeg';

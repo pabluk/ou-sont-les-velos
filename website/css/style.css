@@ -7,14 +7,11 @@ html, body, #map {
     height: 100%;
 }
 
-#bar-right {
+#description {
     position: absolute;
     right: 15px;
     top: 15px;
     z-index: 100;
-}
-
-#description {
     padding: 20px;
     border-radius: 10px;
     color: #e8e8e8;
@@ -31,3 +28,22 @@ html, body, #map {
 #total-bikes, #total-stations {
     font-size: 26px;
 }
+
+@media (max-width: 640px) {
+    #description {
+        width: 93%;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 992px) {
+    #description {
+        width: 46%;
+    }
+}
+
+@media (min-width: 992px) {
+    #description {
+        width: 30%;
+    }
+}
+
