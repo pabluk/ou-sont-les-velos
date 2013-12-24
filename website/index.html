@@ -27,7 +27,11 @@
     <div id="description">
         <h1>Où sont les vélos ?</h1>
         <p>Un outil qui permet d'analyser et suivre en temps réel la distribution des vélos en libre-service de la ville de Nantes.</p>
-        <p class="hidden-xs hidden-sm"><b id="total-bikes">...</b> vélos disponibles<br/><b id="total-stations">...</b> stations ouvertes</p>
+        <p class="hidden-xs hidden-sm">
+            <b id="total-bikes">...</b> vélos disponibles<br/>
+            <b id="total-stations">...</b> stations ouvertes<br/>
+            <small id="last-update">...</small>
+        </p>
         <p id="about" class="hidden-xs"><b>À propos</b><br/>
             Cette application web a été créée en utilisant 2 jeux de données Open data, <a href="http://data.paysdelaloire.fr/donnees/detail/photographies-aeriennes-de-la-loire-atlantique/" target="_blank">les photographies aériennes de la Loire-Atlantique</a> et l'<a href="https://developer.jcdecaux.com/" target="_blank">API Bicloo</a>.
         </p>
@@ -52,13 +56,16 @@
     var stations = [];
     var totalAvailableBikes = 0;
     $.get("js/stations.js", function(data) {
-        data.forEach(function(station) {
+        var lastUpdate = new Date(data.timestamp * 1000);
+
+        data.stations.forEach(function(station) {
             point = {lat:station.position.lat, lon:station.position.lng, value:station.available_bikes}
             stations.push(point);
             totalAvailableBikes += station.available_bikes;
         });
         $('#total-bikes').text(totalAvailableBikes);
         $('#total-stations').text(stations.length);
+        $('#last-update').text(lastUpdate.toLocaleDateString() + " " + lastUpdate.toLocaleTimeString());
         heatmapLayer.setData(stations);
     }, "json");
 
