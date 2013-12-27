@@ -15,7 +15,6 @@ var heatmapLayerLatest = L.TileLayer.heatMap({
 });
 
 function updateHeatmap(heatmapLayer) {
-    console.log("Updating heatmap...");
     var stations = [];
     var totalAvailableBikes = 0;
 
@@ -70,4 +69,4 @@ var  southWest = L.latLng(47.162, -1.705),
 map.setMaxBounds(bounds);
 updateHeatmap(heatmapLayer);
 
-setInterval(updateHeatmap, 3 * 1000, heatmapLayer);
+setInterval(updateHeatmap, 60 * 1000, heatmapLayer);
