@@ -3,13 +3,13 @@ var osm = new L.TileLayer(osmUrl, {tms:true, minZoom: 14, maxZoom: 15});
 
 var heatmapLayer = null;
 var heatmapLayerLatest = L.TileLayer.heatMap({
-    radius: {value: 180, absolute: true},
-    opacity: 0.75,
+    radius: {value: 220, absolute: true},
+    opacity: 0.7,
     gradient: {
-        0.25: "rgb(0,0,255)",
-        0.45: "rgb(0,255,255)",
-        0.65: "rgb(0,255,0)",
-        0.95: "yellow",
+        0.2: "rgb(0,0,255)",
+        0.4: "rgb(0,255,255)",
+        0.6: "rgb(0,255,0)",
+        0.8: "rgb(255,255,0)",
         1.0: "rgb(255,0,0)"
     }
 });
@@ -19,13 +19,13 @@ function updateHeatmap(heatmapLayer) {
     var totalAvailableBikes = 0;
 
     heatmapLayer = L.TileLayer.heatMap({
-        radius: {value: 180, absolute: true},
-        opacity: 0.75,
+        radius: {value: 220, absolute: true},
+        opacity: 0.7,
         gradient: {
-            0.25: "rgb(0,0,255)",
-            0.45: "rgb(0,255,255)",
-            0.65: "rgb(0,255,0)",
-            0.95: "yellow",
+            0.2: "rgb(0,0,255)",
+            0.4: "rgb(0,255,255)",
+            0.6: "rgb(0,255,0)",
+            0.8: "rgb(255,255,0)",
             1.0: "rgb(255,0,0)"
         }
     });
@@ -52,7 +52,7 @@ function updateHeatmap(heatmapLayer) {
 
 
 var map = L.map('map', {
-    center: new L.LatLng(47.215, -1.5515),
+    center: new L.LatLng(47.218, -1.5515),
     zoom: 14,
     layers: [osm, heatmapLayerLatest],
     attributionControl: false,
