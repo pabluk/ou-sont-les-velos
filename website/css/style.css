@@ -29,6 +29,10 @@ html, body, #map {
     font-size: 26px;
 }
 
+#last-update-date {
+    text-transform: capitalize;
+}
+
 @media (max-width: 640px) {
     #description {
         width: 93%;
