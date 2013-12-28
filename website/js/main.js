@@ -6,11 +6,11 @@ var heatmapLayerLatest = L.TileLayer.heatMap({
     radius: {value: 200, absolute: true},
     opacity: 0.8,
     gradient: {
-        0.2: "rgb(0,0,255)",
-        0.4: "rgb(0,255,255)",
-        0.6: "rgb(0,255,0)",
-        0.8: "rgb(255,255,0)",
-        1.0: "rgb(255,0,0)"
+        0.10: "rgb(0,0,255)",
+        0.30: "rgb(0,255,255)",
+        0.55: "rgb(0,255,0)",
+        0.80: "rgb(255,255,0)",
+        1.00: "rgb(255,0,0)"
     }
 });
 
@@ -22,11 +22,11 @@ function updateHeatmap(heatmapLayer) {
         radius: {value: 200, absolute: true},
         opacity: 0.8,
         gradient: {
-            0.2: "rgb(0,0,255)",
-            0.4: "rgb(0,255,255)",
-            0.6: "rgb(0,255,0)",
-            0.8: "rgb(255,255,0)",
-            1.0: "rgb(255,0,0)"
+            0.10: "rgb(0,0,255)",
+            0.30: "rgb(0,255,255)",
+            0.55: "rgb(0,255,0)",
+            0.80: "rgb(255,255,0)",
+            1.00: "rgb(255,0,0)"
         }
     });
     $.get("js/stations.js", function(data) {
