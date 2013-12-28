@@ -3,8 +3,8 @@ var osm = new L.TileLayer(osmUrl, {tms:true, minZoom: 14, maxZoom: 15});
 
 var heatmapLayer = null;
 var heatmapLayerLatest = L.TileLayer.heatMap({
-    radius: {value: 220, absolute: true},
-    opacity: 0.7,
+    radius: {value: 200, absolute: true},
+    opacity: 0.8,
     gradient: {
         0.2: "rgb(0,0,255)",
         0.4: "rgb(0,255,255)",
@@ -19,8 +19,8 @@ function updateHeatmap(heatmapLayer) {
     var totalAvailableBikes = 0;
 
     heatmapLayer = L.TileLayer.heatMap({
-        radius: {value: 220, absolute: true},
-        opacity: 0.7,
+        radius: {value: 200, absolute: true},
+        opacity: 0.8,
         gradient: {
             0.2: "rgb(0,0,255)",
             0.4: "rgb(0,255,255)",
