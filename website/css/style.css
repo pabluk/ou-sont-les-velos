@@ -33,10 +33,6 @@ html, body, #map {
     text-transform: capitalize;
 }
 
-#status-block {
-  display: none;
-}
-
 @media (max-width: 640px) {
     #description {
         width: 93%;

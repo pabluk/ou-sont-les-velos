@@ -42,8 +42,7 @@ function updateHeatmap(heatmapLayer) {
         $('#total-stations').text(stations.length);
         dateOptions = {weekday: "long", year: "numeric", month: "short", day: "numeric"};
         $('#last-update-date').text(lastUpdate.toLocaleDateString("fr-FR", dateOptions));
-        $('#last-update-time').text(lastUpdate.toLocaleTimeString("fr-FR") + " UTC+1");
-        $('#status-block').show();
+        $('#last-update-time').text("à " + lastUpdate.toLocaleTimeString("fr-FR") + " UTC+1");
         heatmapLayer.setData(stations);
         map.addLayer(heatmapLayer);
         map.removeLayer(heatmapLayerLatest);
