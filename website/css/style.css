@@ -36,6 +36,7 @@ html, body, #map {
 @media (max-width: 640px) {
     #description {
         width: 93%;
+        text-align: center;
     }
 }
 
