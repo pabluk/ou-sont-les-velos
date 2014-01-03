@@ -19,20 +19,20 @@
     <div id="map"></div>
     <div id="description">
         <h1>Où sont les vélos de Nantes&nbsp;?</h1>
-        <p>Un outil qui permet d'analyser et suivre en temps réel la distribution des vélos en libre-service</p>
-        <p class="hidden-xs hidden-sm">
+        <p id="subtitle">Un outil qui permet d'analyser et suivre en temps réel la distribution des vélos en libre-service</p>
+        <p id="status-block">
             <b id="total-bikes">0</b> vélos disponibles<br/>
             <b id="total-stations">0</b> stations ouvertes<br/>
             <small><span id="last-update-date"></span> <span id="last-update-time"></span></small>
         </p>
-        <p id="about" class="hidden-xs"><b>À propos</b><br/>
+        <p id="about"><b>À propos</b><br/>
             <small>
             En utilisant un <a href="http://en.wikipedia.org/wiki/Heat_map" target="_blank">heat map</a> on peut voir comment sont distribués les vélos dans la ville.
             La couleur rouge représente les endroits où il y a la plus grande concentration de vélos disponibles et la bleu là où il n'y en n'a pas.<br/>
             Cette application web a été créée en utilisant 2 jeux de données Open data, <a href="http://data.paysdelaloire.fr/donnees/detail/photographies-aeriennes-de-la-loire-atlantique/" target="_blank">les photographies aériennes de la Loire-Atlantique</a> et l'<a href="https://developer.jcdecaux.com/" target="_blank">API Bicloo</a>.
             </small>
         </p>
-        <p><small>Développé par <a href="http://seminar.io/about/" target="_blank">Pablo Seminario</a>.</small></p>
+        <p id="credits"><small>Développé par <a href="http://seminar.io/about/" target="_blank">Pablo Seminario</a>.</small></p>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

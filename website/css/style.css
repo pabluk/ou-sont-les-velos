@@ -33,22 +33,64 @@ html, body, #map {
     text-transform: capitalize;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 640px) and (max-height: 640px){
+    #description {
+        width: 93%;
+        text-align: center;
+    }
+    #status-block, #about {
+        display:none;
+    }
+}
+
+@media (max-width: 640px) and (min-height: 640px) {
     #description {
         width: 93%;
         text-align: center;
     }
 }
 
-@media (min-width: 640px) and (max-width: 992px) {
+@media (min-width: 640px) and (max-width: 992px) and (max-height: 780px) {
+    #description {
+        width: 46%;
+    }
+    #status-block, #about {
+        display: none;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 992px) and (min-height: 780px) {
     #description {
         width: 46%;
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1280px) and (max-height: 720px) {
+    #description {
+        width: 38%;
+    }
+    #status-block, #about {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1280px) and (min-height: 720px) {
+    #description {
+        width: 38%;
+    }
+}
+
+@media (min-width: 1280px) and (max-height: 780px) {
+    #description {
+        width: 30%;
+    }
+    #status-block, #about {
+        display: none;
+    }
+}
+
+@media (min-width: 1280px) and (min-height: 780px) {
     #description {
         width: 30%;
     }
 }
-
