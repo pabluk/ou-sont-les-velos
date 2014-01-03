@@ -1,5 +1,5 @@
-var osmUrl='http://tiles.seminar.io/nantes/{z}/{x}/{y}.jpeg';
-var osm = new L.TileLayer(osmUrl, {tms:true, minZoom: 14, maxZoom: 15});       
+var tilesUrl='http://tiles.seminar.io/nantes/{z}/{x}/{y}.jpeg';
+var tiles = new L.TileLayer(tilesUrl, {tms:true, minZoom: 14, maxZoom: 15});
 
 var heatmapLayer = null;
 var heatmapLayerLatest = L.TileLayer.heatMap({
@@ -55,7 +55,7 @@ function updateHeatmap(heatmapLayer) {
 var map = L.map('map', {
     center: new L.LatLng(47.218, -1.5515),
     zoom: 14,
-    layers: [osm, heatmapLayerLatest],
+    layers: [tiles],
     attributionControl: false,
     zoomControl: false,
     touchZoom: false,
