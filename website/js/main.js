@@ -1,8 +1,6 @@
 var tilesUrl='http://tiles.seminar.io/nantes/{z}/{x}/{y}.jpeg';
 var tiles = new L.TileLayer(tilesUrl, {tms:true, minZoom: 14, maxZoom: 15});
-
-var heatmapLayer = null;
-var heatmapLayerLatest = L.TileLayer.heatMap({
+var heatmapOptions = {
     attribution: 'Images &copy; <a href="http://vuduciel.loire-atlantique.fr/utiliser-les-photos.html" target="_blank">D&eacute;partement de Loire-Atlantique</a>',
     radius: {value: 200, absolute: true},
     opacity: 0.8,
@@ -13,24 +11,16 @@ var heatmapLayerLatest = L.TileLayer.heatMap({
         0.80: "rgb(255,255,0)",
         1.00: "rgb(255,0,0)"
     }
-});
+}
+
+var heatmapLayer = null;
+var heatmapLayerLatest = L.TileLayer.heatMap(heatmapOptions);
 
 function updateHeatmap(heatmapLayer) {
     var stations = [];
     var totalAvailableBikes = 0;
 
-    heatmapLayer = L.TileLayer.heatMap({
-        attribution: 'Images &copy; <a href="http://vuduciel.loire-atlantique.fr/utiliser-les-photos.html" target="_blank">D&eacute;partement de Loire-Atlantique</a>',
-        radius: {value: 200, absolute: true},
-        opacity: 0.8,
-        gradient: {
-            0.10: "rgb(0,0,255)",
-            0.30: "rgb(0,255,255)",
-            0.55: "rgb(0,255,0)",
-            0.80: "rgb(255,255,0)",
-            1.00: "rgb(255,0,0)"
-        }
-    });
+    heatmapLayer = L.TileLayer.heatMap(heatmapOptions);
     $.get("js/stations.js", function(data) {
         var lastUpdate = new Date(data.timestamp * 1000);
 
