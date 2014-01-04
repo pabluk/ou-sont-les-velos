@@ -3,6 +3,7 @@ var tiles = new L.TileLayer(tilesUrl, {tms:true, minZoom: 14, maxZoom: 15});
 
 var heatmapLayer = null;
 var heatmapLayerLatest = L.TileLayer.heatMap({
+    attribution: 'Images &copy; <a href="http://vuduciel.loire-atlantique.fr/utiliser-les-photos.html" target="_blank">D&eacute;partement de Loire-Atlantique</a>',
     radius: {value: 200, absolute: true},
     opacity: 0.8,
     gradient: {
@@ -19,6 +20,7 @@ function updateHeatmap(heatmapLayer) {
     var totalAvailableBikes = 0;
 
     heatmapLayer = L.TileLayer.heatMap({
+        attribution: 'Images &copy; <a href="http://vuduciel.loire-atlantique.fr/utiliser-les-photos.html" target="_blank">D&eacute;partement de Loire-Atlantique</a>',
         radius: {value: 200, absolute: true},
         opacity: 0.8,
         gradient: {
@@ -56,13 +58,13 @@ var map = L.map('map', {
     center: new L.LatLng(47.218, -1.5515),
     zoom: 14,
     layers: [tiles],
-    attributionControl: false,
     zoomControl: false,
     touchZoom: false,
     doubleClickZoom: false,
     boxZoom: false,
     scrollWheelZoom: false,
 });
+map.attributionControl.setPrefix("");
 
 var  southWest = L.latLng(47.162, -1.705),
      northEast = L.latLng(47.274, -1.395),
